@@ -1,16 +1,21 @@
-<header class="header-outer">
-	<div class="header-inner responsive-wrapper">
-	  <div class="header-logo">
+<header class="header">
+	<nav class="nav-container">
+	  <div class="logo">
 		<img src="/assets/logo-pyme.png" alt="Logo" />
 	  </div>
+	  
+	  <button class="menu-button" (click)="toggleMenu()" [class.active]="isMenuOpen">
+		<span></span>
+		<span></span>
+		<span></span>
+	  </button>
   
-	  <nav class="header-navigation">
-		<a routerLink="/" routerLinkActive="active">Inicio</a>
+	  <div class="nav-links" [class.show]="isMenuOpen">
+		<a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
 		<a routerLink="/familiar" routerLinkActive="active">Familiar</a>
 		<a routerLink="/tcg" routerLinkActive="active">Tcg</a>
 		<a routerLink="/mayores" routerLinkActive="active">Mayores</a>
 		<a routerLink="/nacional" routerLinkActive="active">Nacional</a>
-		<button>Menu</button>
-	  </nav>
-	</div>
+	  </div>
+	</nav>
   </header>
