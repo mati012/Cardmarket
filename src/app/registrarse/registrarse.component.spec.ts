@@ -20,18 +20,18 @@ describe('RegistrarseComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Crea componente', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize form with empty fields and invalid state', () => {
+  it('inicializa el form con campos vacios y erroneos', () => {
     expect(component.registroUsuario.valid).toBeFalsy();
     expect(component.registroUsuario.get('nombre')?.value).toBe('');
     expect(component.registroUsuario.get('email')?.value).toBe('');
     expect(component.registroUsuario.get('contrasena')?.value).toBe('');
   });
 
-  it('should validate password requirements correctly', () => {
+  it('valida contrasena', () => {
     const passwordControl = component.registroUsuario.get('contrasena');
     
 
@@ -43,7 +43,7 @@ describe('RegistrarseComponent', () => {
     expect(passwordControl?.valid).toBeTruthy();
   });
 
-  it('should validate age requirement correctly', () => {
+  it('valida edad', () => {
     const fechaNacControl = component.registroUsuario.get('fechaNac');
     
    

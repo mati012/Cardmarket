@@ -24,15 +24,15 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('deberia crear component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have an invalid form initially', () => {
+  it('form erroneo', () => {
     expect(component.loginUsuario.valid).toBeFalsy();
   });
 
-  it('should have valid form when fields are properly filled', () => {
+  it('form rellenado correctamente', () => {
     component.loginUsuario.controls['email'].setValue('test@test.com');
     component.loginUsuario.controls['contrasena'].setValue('password123');
     expect(component.loginUsuario.valid).toBeTruthy();
