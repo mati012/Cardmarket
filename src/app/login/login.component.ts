@@ -1,5 +1,7 @@
+// login.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
@@ -21,19 +23,18 @@ export class LoginComponent implements OnInit {
   submitted = false;
   isLoading = false;
   showSuccess = false;
+  loginError = '';
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loginUsuario = this.fb.group(
       {
         email: ['', [Validators.required, Validators.email]],
-        contrasena: [
-          '',
-          [
-            Validators.required,
-          ],
-        ],
+        contrasena: ['', [Validators.required]],
       },
       {}
     );
@@ -51,6 +52,7 @@ export class LoginComponent implements OnInit {
 
   async onSubmit() {
     this.submitted = true;
+    this.loginError = '';
 
     if (this.loginUsuario.valid) {
       this.isLoading = true;
@@ -58,17 +60,20 @@ export class LoginComponent implements OnInit {
       try {
         console.log('Formulario enviado:', this.loginUsuario.value);
 
+        // Simulate API call
         await new Promise((resolve) => setTimeout(resolve, 1000));
 
+        // Assuming login is successful
         this.showSuccess = true;
-        this.loginUsuario.reset();
-        this.submitted = false;
-
+        
+        // Show success message briefly before navigation
         setTimeout(() => {
-          this.showSuccess = false;
-        }, 3000);
+          this.router.navigate(['/home']); // Navigate to home page
+        }, 1000);
+
       } catch (error) {
-        console.error('Error al registrar:', error);
+        console.error('Error al iniciar sesión:', error);
+        this.loginError = 'Error al iniciar sesión. Por favor, intente nuevamente.';
       } finally {
         this.isLoading = false;
       }
@@ -86,5 +91,6 @@ export class LoginComponent implements OnInit {
     this.submitted = false;
     this.loginUsuario.reset();
     this.showSuccess = false;
+    this.loginError = '';
   }
 }
