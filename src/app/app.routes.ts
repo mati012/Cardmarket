@@ -8,12 +8,17 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
+import { RegistrarseComponent } from './registrarse/registrarse.component';
+import { LoginComponent } from './login/login.component';
+
 export const routes: Routes = [
   { path: '', component: HomeComponent },  // Home route
   { path: 'familiar', component: FamiliarComponent },
   { path: 'mayores', component: MayoresComponent },
   { path: 'tcg', component: TcgComponent },
   { path: 'nacional', component: NacionalesComponent },
+  {path: 'login', component: LoginComponent},
+  {path: 'registrarse', component: RegistrarseComponent},
   { path: '**', redirectTo: '', pathMatch: 'full' } // Wildcard redirect
 ];
 
