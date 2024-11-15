@@ -25,10 +25,7 @@ export class LoginComponent implements OnInit {
   showSuccess = false;
   loginError = '';
 
-  constructor(
-    private fb: FormBuilder,
-    private router: Router
-  ) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.loginUsuario = this.fb.group(
@@ -60,20 +57,17 @@ export class LoginComponent implements OnInit {
       try {
         console.log('Formulario enviado:', this.loginUsuario.value);
 
-        // Simulate API call
         await new Promise((resolve) => setTimeout(resolve, 1000));
 
-        // Assuming login is successful
         this.showSuccess = true;
-        
-        // Show success message briefly before navigation
-        setTimeout(() => {
-          this.router.navigate(['/home']); // Navigate to home page
-        }, 1000);
 
+        setTimeout(() => {
+          this.router.navigate(['/home']);
+        }, 1000);
       } catch (error) {
         console.error('Error al iniciar sesión:', error);
-        this.loginError = 'Error al iniciar sesión. Por favor, intente nuevamente.';
+        this.loginError =
+          'Error al iniciar sesión. Por favor, intente nuevamente.';
       } finally {
         this.isLoading = false;
       }
